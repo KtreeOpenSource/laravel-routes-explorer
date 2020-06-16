@@ -13,7 +13,14 @@ class ApiCallsCountCollector implements DataCollectorInterface
             'url' => $request->route()->uri()
         ]);
 
-        $apiCall->user_id = (\Auth::guest()) ? null : \Auth::id();
+        $providerId = \Request::header('provider-Id');
+        $adminId = \Auth::id();
+
+        $providerId = isset($providerId)?$providerId:null;
+        $adminId = isset($adminId)?$adminId:null;
+
+        $apiCall->adminUserId = $adminId;
+        $apiCall->corporateClientId = $providerId;
         $apiCall->save();
     }
 }

@@ -19,7 +19,7 @@ namespace InfyOm\RoutesExplorer\Models;
  */
 class ApiCallsCount extends \Eloquent
 {
-    public $table = 'api_calls_count';
+    public $table = 'system_api_calls_count';
 
     protected $fillable = [
         'url'
